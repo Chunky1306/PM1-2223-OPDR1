@@ -118,7 +118,7 @@ int main ( ) {
     double tempInCelcius;
     double tempInFarenheit;
     if (J < 30){
-        oud = false
+        oud = false;
     }
     if (!oud){
         cout << "Je hebt je geboortedag juist ingevuld. Je begint nu aan de "
