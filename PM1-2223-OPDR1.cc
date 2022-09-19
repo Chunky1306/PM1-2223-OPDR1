@@ -7,7 +7,7 @@ using namespace std;
 const int jaar = 2022;
 const int maand = 9;
 const int dag = 26;
-const int bjaar = 1901; //jaar om mee te beginnen voor berekening
+const int bjaar = 1905; //jaar om mee te beginnen voor berekening
 const int bmaand = 1; // maand om mee te beginnen voor berekening
 const int bdag = 1; // maand om mee te beginnen voor berekening
 //nog even kijken naar r84
@@ -109,6 +109,50 @@ int main ( ) {
          //<< "geboren bent in kunnen voeren?" << endl;
     //cin >> weekdag;                         //01-01-1901 is een dinsdag
 
+    int dagenSindsBegin; //aantal dagen sinds het begin van de berekening
+    int jarenSindsBegin = gebjaar - bjaar;
+    dagenSindsBegin = 365 * jarenSindsBegin + (jarenSindsBegin / 4);
+    if (gebjaar % 4 == 0){
+        dagenSindsBegin += (1);
+        cout <<"adding extra day" <<endl;
+    }
+    if (gebmaand == 2){
+        dagenSindsBegin += 31;
+    }
+    if (gebmaand == 3){
+        dagenSindsBegin += (31+28);
+    }
+    if (gebmaand == 4){
+        dagenSindsBegin += (31+28+31);
+    }
+    if (gebmaand == 5){
+        dagenSindsBegin += (31+28+31+30);
+    }
+    if (gebmaand == 6){
+        dagenSindsBegin += (31+28+31+30+31);
+    }
+    if (gebmaand == 7){
+        dagenSindsBegin += (31+28+31+30+31+30);
+    }
+    if (gebmaand == 8){
+        dagenSindsBegin += (31+28+31+30+31+30+31);
+    }
+    if (gebmaand == 9){
+        dagenSindsBegin += (31+28+31+30+31+30+31+31);
+    }
+    if (gebmaand == 10){
+        dagenSindsBegin += (31+28+31+30+31+30+31+31+30);
+    }
+    if (gebmaand == 11){
+        dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31);
+    }
+    if (gebmaand == 12){
+        dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31+30);
+    }
+    dagenSindsBegin += (gebdag - 1);
+    //cout << (dagenSindsBegin % 7);
+    //cout << " geboortedag ma=1, di=2 etc." <<endl;
+    //cout <<dagenSindsBegin;
 
 
     //begin 2e deel van de test
