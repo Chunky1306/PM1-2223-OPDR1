@@ -105,16 +105,11 @@ int main ( ) {
             cout << "Oftewel " << Tol << " maanden." << endl;
         }//else if
 
-    //cout << "Zou je nu de eerste letter van de dag van de week waarop je "
-         //<< "geboren bent in kunnen voeren?" << endl;
-    //cin >> weekdag;                         //01-01-1901 is een dinsdag
-
     int dagenSindsBegin; //aantal dagen sinds het begin van de berekening
     int jarenSindsBegin = gebjaar - bjaar;
     dagenSindsBegin = 365 * jarenSindsBegin + (jarenSindsBegin / 4);
     if (gebjaar % 4 == 0){
-        dagenSindsBegin += (1);
-        cout <<"adding extra day" <<endl;
+        dagenSindsBegin += (1); //voegt extra dag toe ivm schrikkeljaar.
     }
     if (gebmaand == 2){
         dagenSindsBegin += 31;
@@ -153,7 +148,59 @@ int main ( ) {
     //cout << (dagenSindsBegin % 7);
     //cout << " geboortedag ma=1, di=2 etc." <<endl;
     //cout <<dagenSindsBegin;
+    int geboorteWeekdag = dagenSindsBegin % 7;
 
+    cout <<"Vul de eerste letter van je geboortedag in." <<endl;
+    char gebDag1;
+    char gebDag2;
+    cin >> gebDag1;
+    gebDag1 = tolower(gebDag1);
+    if (gebDag1 == 'm' && geboorteWeekdag != 1){
+        cout << "you absolute buffoon";
+        return 1;
+    }
+    if (gebDag1 == 'd'){
+        cout <<"Vul ook de tweede letter van je geboortedag in." <<endl;
+        cin >> gebDag2;
+        gebDag2 = tolower(gebDag2);
+        if (gebDag2 == 'i' && geboorteWeekdag != 2){
+            cout << "you absolute buffoon";
+            return 1;
+        }
+        if (gebDag2 == 'o' && geboorteWeekdag != 4){
+            cout << "you absolute buffoon";
+            return 1;
+        }
+    }
+    if (gebDag1 == 'w' && geboorteWeekdag != 3){
+        cout << "you absolute buffoon";
+        return 1;
+    }
+    if (gebDag1 == 'v' && geboorteWeekdag != 5){
+        cout << "you absolute buffoon";
+        return 1;
+    }
+    if (gebDag1 == 'z'){
+        cout <<"Vul ook de tweede letter van je geboortedag in." <<endl;
+        cin >> gebDag2;
+        gebDag2 = tolower(gebDag2);
+        if (gebDag2 == 'a' && geboorteWeekdag != 6){
+            cout << "you absolute buffoon";
+            return 1;
+        }
+        if (gebDag2 == 'o' && geboorteWeekdag != 0){
+            cout << "you absolute buffoon";
+            return 1;
+        }
+    }
+    if (gebDag1 !='m' &&
+        gebDag1 !='d' &&
+        gebDag1 !='w' &&
+        gebDag1 !='v' &&
+        gebDag1 !='z'){
+        cout << "you mild buffoon";
+        return 1;
+    }
 
     //begin 2e deel van de test
     int aantalFouten = 0;
