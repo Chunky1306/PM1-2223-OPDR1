@@ -111,86 +111,58 @@ int main ( ) {
     if ((gebjaar % 4 == 0) && (gebmaand > 2)){
         dagenSindsBegin += (1); //voegt extra dag toe ivm schrikkeljaar.
     }
-    if (gebmaand == 2){
-        dagenSindsBegin += 31;
-    }
-    if (gebmaand == 3){
-        dagenSindsBegin += (31+28);
-    }
-    if (gebmaand == 4){
-        dagenSindsBegin += (31+28+31);
-    }
-    if (gebmaand == 5){
-        dagenSindsBegin += (31+28+31+30);
-    }
-    if (gebmaand == 6){
-        dagenSindsBegin += (31+28+31+30+31);
-    }
-    if (gebmaand == 7){
-        dagenSindsBegin += (31+28+31+30+31+30);
-    }
-    if (gebmaand == 8){
-        dagenSindsBegin += (31+28+31+30+31+30+31);
-    }
-    if (gebmaand == 9){
-        dagenSindsBegin += (31+28+31+30+31+30+31+31);
-    }
-    if (gebmaand == 10){
-        dagenSindsBegin += (31+28+31+30+31+30+31+31+30);
-    }
-    if (gebmaand == 11){
-        dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31);
-    }
-    if (gebmaand == 12){
-        dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31+30);
+
+    switch(gebmaand){
+        case 2: dagenSindsBegin += 31;
+        case 3: dagenSindsBegin += (31+28);
+        case 4: dagenSindsBegin += (31+28+31);
+        case 5: dagenSindsBegin += (31+28+31+30);
+        case 6: dagenSindsBegin += (31+28+31+30+31);
+        case 7: dagenSindsBegin += (31+28+31+30+31+30);
+        case 8: dagenSindsBegin += (31+28+31+30+31+30+31);
+        case 9: dagenSindsBegin += (31+28+31+30+31+30+31+31);
+        case 10: dagenSindsBegin += (31+28+31+30+31+30+31+31+30);
+        case 11: dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31);
+        case 12: dagenSindsBegin += (31+28+31+30+31+30+31+31+30+31+30);
     }
     dagenSindsBegin += (gebdag - 1);
-    //cout << (dagenSindsBegin % 7);
-    //cout << " geboortedag ma=1, di=2 etc." <<endl;
-    //cout <<dagenSindsBegin;
     int geboorteWeekdag = dagenSindsBegin % 7;
 
     cout <<"Vul de eerste letter van je geboortedag in." <<endl;
     char gebDag1;
     char gebDag2;
     cin >> gebDag1;
+    bool foutAntwoord = false;
     gebDag1 = tolower(gebDag1);
     if (gebDag1 == 'm' && geboorteWeekdag != 1){
-        cout << "you absolute buffoon";
-        return 1;
+        foutAntwoord = true;
     }
     if (gebDag1 == 'd'){
         cout <<"Vul ook de tweede letter van je geboortedag in." <<endl;
         cin >> gebDag2;
         gebDag2 = tolower(gebDag2);
         if (gebDag2 == 'i' && geboorteWeekdag != 2){
-            cout << "you absolute buffoon";
-            return 1;
+            foutAntwoord = true;
         }
         if (gebDag2 == 'o' && geboorteWeekdag != 4){
-            cout << "you absolute buffoon";
-            return 1;
+            foutAntwoord = true;
         }
     }
     if (gebDag1 == 'w' && geboorteWeekdag != 3){
-        cout << "you absolute buffoon";
-        return 1;
+        foutAntwoord = true;
     }
     if (gebDag1 == 'v' && geboorteWeekdag != 5){
-        cout << "you absolute buffoon";
-        return 1;
+        foutAntwoord = true;
     }
     if (gebDag1 == 'z'){
         cout <<"Vul ook de tweede letter van je geboortedag in." <<endl;
         cin >> gebDag2;
         gebDag2 = tolower(gebDag2);
         if (gebDag2 == 'a' && geboorteWeekdag != 6){
-            cout << "you absolute buffoon";
-            return 1;
+            foutAntwoord = true;
         }
         if (gebDag2 == 'o' && geboorteWeekdag != 0){
-            cout << "you absolute buffoon";
-            return 1;
+            foutAntwoord = true;
         }
     }
     if (gebDag1 !='m' &&
@@ -198,9 +170,16 @@ int main ( ) {
         gebDag1 !='w' &&
         gebDag1 !='v' &&
         gebDag1 !='z'){
-        cout << "you mild buffoon";
+        foutAntwoord = true;
+    }
+    if (foutAntwoord){
+        cout << "Fout. Je bent geboren op de ";
+        cout << geboorteWeekdag;
+        cout << "e dag van de week";
         return 1;
     }
+    cout << endl;
+    cout << endl;
 
     //begin 2e deel van de test
     int aantalFouten = 0;
@@ -208,7 +187,7 @@ int main ( ) {
     int tempOriginal;
     double tempInCelcius;
     double tempInFarenheit;
-    if (J < 30){
+    if (dagenSindsBegin > 32045){ //aantal dagen voor iemand die 30 is op 26/9
         oud = false;
     }
     if (!oud){
