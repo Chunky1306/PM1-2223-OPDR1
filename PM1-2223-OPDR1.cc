@@ -108,7 +108,7 @@ int main ( ) {
     int dagenSindsBegin; //aantal dagen sinds het begin van de berekening
     int jarenSindsBegin = gebjaar - bjaar;
     dagenSindsBegin = 365 * jarenSindsBegin + (jarenSindsBegin / 4);
-    if (gebjaar % 4 == 0){
+    if ((gebjaar % 4 == 0) && (gebmaand > 2)){
         dagenSindsBegin += (1); //voegt extra dag toe ivm schrikkeljaar.
     }
     if (gebmaand == 2){
