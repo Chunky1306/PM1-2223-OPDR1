@@ -10,7 +10,6 @@ const int dag = 26;
 const int bjaar = 1905; //jaar om mee te beginnen voor berekening
 const int bmaand = 1; // maand om mee te beginnen voor berekening
 const int bdag = 1; // maand om mee te beginnen voor berekening
-//nog even kijken naar r84
 
 int main ( ) {
     int gebjaar;
@@ -18,51 +17,50 @@ int main ( ) {
     int gebdag;
     int weekdag;
     cout << "Hallo gebruiker," << endl;
-
-
     cout << "Vul alsjeblieft je geboortejaar in als geheel getal." << endl;
     cin >> gebjaar;
     if (jaar - gebjaar > 101 ) {
         cout << "Helaas, u bent te oud." << endl;
         return 1;
-    } //if
+    }
     if (gebjaar > jaar){
         cout << "Je bent een tijdreiziger." << endl;
         return 1;
-    }//if
+    }
     if (jaar - gebjaar < 10) {
         cout << "Helaas, je bent te jong." << endl;
         return 1;
-    } //if
-
+    }
+    cout << endl;
     cout << "Dankjewel, vul dan nu je geboortemaand in, ook weer"
          << " als geheel getal." << endl;
     cin >> gebmaand;
     if (gebmaand > 12) {
         cout << "Deze maand bestaat niet." << endl;
         return 1;
-    }//if
+    }
     if (gebjaar == 2012 && gebmaand > maand) {
         cout << "Je bent te jong." << endl;
         return 1;
-    }//if
+    }
     if (gebjaar == 1921 && gebmaand > maand) {
         cout << "U bent te oud." << endl;
         return 1;
     }
     if (gebmaand == maand) {
         cout << "Gefeliciteerd met je verjaarmaand!" << endl;
-    }//if
+    }
 
     int J = jaar - gebjaar;//aantal jaren
     int M = maand - gebmaand;//aantal maanden voor okt
     int O = maand - gebmaand + 12;//aantal maanden na sept
     int Tot = (jaar - gebjaar) * 12 + maand;//maanden totaal voor okt
     int Tol = (jaar - gebjaar -1) * 12 + maand;// maanden totaal na okt
-
+    cout << endl;
     cout << "Weer bedankt! Zou je nu nog je geboortedag in kunnen vullen?"
          << " Ook graag weer als geheel getal." << endl;
     cin >> gebdag;
+    cout << endl;
     if (gebjaar == 2012 && gebmaand == maand && gebdag > dag) {
         cout << "Je bent te jong." << endl;
         return 1;
@@ -127,7 +125,7 @@ int main ( ) {
     }
     dagenSindsBegin += (gebdag - 1);
     int geboorteWeekdag = dagenSindsBegin % 7;
-
+    cout << endl;
     cout <<"Vul de eerste letter van je geboortedag in." <<endl;
     char gebDag1;
     char gebDag2;
@@ -178,7 +176,7 @@ int main ( ) {
         cout << "e dag van de week";
         return 1;
     }
-    cout << endl;
+
     cout << endl;
 
     //begin 2e deel van de test
@@ -199,7 +197,8 @@ int main ( ) {
         "rest van de test"<<endl;
 
     }
-    /*Initializes seed and returns random int betweem -40 and 120*/
+    cout << endl;
+    /*Initialize seed and returns random int betweem -40 and 120*/
     srand (time(NULL));
     tempOriginal = rand() % 160;
     tempOriginal = tempOriginal -40;
